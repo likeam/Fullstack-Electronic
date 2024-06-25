@@ -1,7 +1,15 @@
+import Container from "./ui/Container";
+import Footer from "./ui/Footer";
+import Header from "./ui/Header";
+
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <main>
+      <Header />
+      <Container>
+        <p>Electronics</p>
+      </Container>
+      <Footer />
+    </main>
   )
 }
