@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { logo } from "../assets";
 import { IoClose, IoSearchOutline } from "react-icons/io5";
-import { FiStar, FiUser } from "react-icons/fi";
+import { FiShoppingBag, FiStar, FiUser } from "react-icons/fi";
+import Container from "./Container";
+import { FaChevronDown } from "react-icons/fa";
+
+const bottomNavigation = [
+  { title: "Home", link: "/" },
+  { title: "Shop", link: "/product" },
+  { title: "Cart", link: "/cart" },
+  { title: "Orders", link: "/orders" },
+  { title: "My Account", link: "/profile" },
+  { title: "Blog", link: "/blog" },
+]; 
 
 const Header = () => {
 
@@ -28,11 +39,22 @@ const Header = () => {
         
         {/*Menu*/}
         <div className=" flex item-center gap-x-6 text-2xl" >
-        <FiUser className= " hover:text-skyText duration-200" />        
+        <FiUser className= " hover:text-skyText duration-200 cursor-pointer" />        
         </div>
-        <div  className=" flex item-center gap-x-6 text-2xl" >
-        <FiStar className= " hover:text-skyText duration-200" />
+        <div  className=" relative block " >
+        <FiStar className= " hover:text-skyText duration-200 cursor-pointer" />
+        <span className=" inline-flex items-center justify-center bg-redText text-whiteText absolute -top-1 -right-2 text-[9px] rounded-full w-4 h-4">0</span>
         </div>
+        <div  className=" relative block " >
+        <FiShoppingBag className= " hover:text-skyText duration-200 cursor-pointer" />
+        <span className=" inline-flex items-center justify-center bg-redText text-whiteText absolute -top-1 -right-2 text-[12px] rounded-full w-4 h-4">0</span>
+        </div>
+      </div>
+      <div className=" w-full bg-darkText text-whiteText">
+        <Container>
+          <p>Select Category   <FaChevronDown /></p>
+        
+        </Container>
       </div>
     </div>
   );
