@@ -51,9 +51,17 @@ const Header = () => {
         </div>
       </div>
       <div className=" w-full bg-darkText text-whiteText">
-        <Container>
-          <p>Select Category   <FaChevronDown /></p>
-        
+        <Container className=" py-2 max-w-4xl flex items-center gap-5 justify-between">
+          <p className=" flex items-center gap-1">Select Category   <FaChevronDown /></p>
+          {
+            bottomNavigation.map(({title}) => (
+             <p key={title} className=" uppercase hidden md:inline-flex text-sm font-semibold text-whiteText
+              hover:text-yellow-200 duration-200 relative overflow-hidden group" >
+                {title}
+                <span className="inline-flex w-full h-[1px] bg-whiteText absolute bottom-0  left-0 transform translate-x-[105%] group-hover:translate-x-0 duration-300" />
+             </p>
+            ))
+          }
         </Container>
       </div>
     </div>
