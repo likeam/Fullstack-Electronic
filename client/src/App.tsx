@@ -1,15 +1,10 @@
-import Container from "./ui/Container";
-import Footer from "./ui/Footer";
-import Header from "./ui/Header";
+import BannerCategories from "./ui/BannerCategories";
+
 
 export default function App() {
   return (
     <main>
-      
-      <Container>
-        <p>Electronics</p>
-      </Container>
-   
+      <BannerCategories />   
     </main>
   )
 }
