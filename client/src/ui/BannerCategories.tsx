@@ -47,7 +47,7 @@ const BannerCategories = () => {
     responsive={responsive}
     infinite={true}
     autoPlay={true}
-    transitionDuration={1000}
+    transitionDuration={1010}
     className=" flex flex-row p-4 max-w-screen-xl mx-auto lg:px-0 relative"
   >
   {categories.map((category:CategoryProps) =>(
