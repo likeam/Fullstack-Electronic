@@ -57,6 +57,7 @@ const BannerCategories = () => {
         <img src={category?.image} alt="cate" 
         className=" w-10 h-10 rounded-full object-cover" 
         />
+        <p className=" text-sm font-samibold">{category?.name}</p>
     </Link>
   ))}
   </Carousel>
