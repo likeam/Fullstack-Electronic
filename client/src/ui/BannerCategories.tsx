@@ -5,6 +5,10 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { CategoryProps } from "../../types";
 import { Link } from "react-router-dom";
+import CustomLeftArrow from "./CustomLeftArrow"
+import CustomRightArrow from "./CustomRightArrow"
+
+
 
 const responsive = {
     superLargeDesktop: {
@@ -49,6 +53,8 @@ const BannerCategories = () => {
     autoPlay={true}
     transitionDuration={1010}
     className=" flex flex-row p-4 max-w-screen-xl mx-auto lg:px-0 relative"
+    customRightArrow={<CustomRightArrow  />}
+    customLeftArrow={<CustomLeftArrow  />}
   >
   {categories.map((category:CategoryProps) =>(
     <Link key={category?._id} to={`/category/${category?._base}`}
