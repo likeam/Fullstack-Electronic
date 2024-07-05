@@ -15,7 +15,7 @@ import {
   Transition,
   MenuItems,  
 } from "@headlessui/react"
-import { CategoryProps } from "../../types";
+import { CategoryProps } from "../../type";
 
 
 

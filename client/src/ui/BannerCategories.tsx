@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { config } from "../../config";
+import {config} from "../../config";
 import { getData } from "../lib";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { CategoryProps } from "../../types";
+import { CategoryProps } from "../../type";
 import { Link } from "react-router-dom";
 import CustomLeftArrow from "./CustomLeftArrow"
 import CustomRightArrow from "./CustomRightArrow"
@@ -55,6 +55,7 @@ const BannerCategories = () => {
     className=" flex flex-row p-4 max-w-screen-xl mx-auto lg:px-0 relative"
     customRightArrow={<CustomRightArrow  />}
     customLeftArrow={<CustomLeftArrow  />}
+   
   >
   {categories.map((category:CategoryProps) =>(
     <Link key={category?._id} to={`/category/${category?._base}`}
