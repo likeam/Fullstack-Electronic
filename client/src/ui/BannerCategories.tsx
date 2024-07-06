@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import {config} from "../../config";
 import { getData } from "../lib";
 import Carousel from 'react-multi-carousel';
-import { CategoryProps } from "../../type";
 import { Link } from "react-router-dom";
 import CustomLeftArrow from "./CustomLeftArrow"
 import CustomRightArrow from "./CustomRightArrow"
+import { config } from "../../config";
+import { CategoryProps } from "../../type";
 
 
 
