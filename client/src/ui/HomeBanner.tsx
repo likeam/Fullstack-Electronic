@@ -1,7 +1,10 @@
 
 
 const HomeBanner = () => {
-  return <div>HomeBanner</div>;
+  return <>
+    <h1>HomeBanner</h1>
+    <h2>homebanner</h2>
+  </>
 };
 
 export default HomeBanner;
