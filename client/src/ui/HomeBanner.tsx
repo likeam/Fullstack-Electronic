@@ -1,13 +1,13 @@
+import { homeBanner } from "../assets";
+import Container from "./Container";
 
 
 const HomeBanner = () => {
-  return <>
-    <h1>HomeBanner</h1>
-    <h2>homebanner</h2>
-    <h3>HomeBanner</h3>
-    <h4>HomeBanner</h4>
-    <h5>Home Banner</h5>
-  </>
+  return <Container>
+    <div>
+      <img src={homeBanner} alt="homeBanner" />
+    </div>
+  </Container>
 };
 
 export default HomeBanner;

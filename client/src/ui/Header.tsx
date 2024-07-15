@@ -5,7 +5,7 @@ import { FiShoppingBag, FiStar, FiUser } from "react-icons/fi";
 import Container from "./Container";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {config} from "../../config";
+import {config} from "../config";
 import { getData } from "../lib";
 import {
   Menu, 
@@ -15,7 +15,7 @@ import {
   Transition,
   MenuItems,  
 } from "@headlessui/react"
-import { CategoryProps } from "../../type";
+import { CategoryProps } from "../type";
 
 
 
