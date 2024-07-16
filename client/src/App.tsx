@@ -1,3 +1,4 @@
+import HighLights from "./HighLights";
 import BannerCategories from "./ui/BannerCategories";
 import HomeBanner from "./ui/HomeBanner";
 
@@ -7,6 +8,7 @@ export default function App() {
     <main>
       <BannerCategories /> 
       <HomeBanner />  
+      <HighLights />
     </main>
   )
 }

@@ -1,11 +1,13 @@
 import  { useEffect, useState } from "react";
 
 import { getData } from "../lib";
-import Carousel from "react-multi-carousel";
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import { Link } from "react-router-dom";
-/*import CustomRightArrow from "./CustomRightArrow";
-import CustomLeftArrow from "./CustomLeftArrow";*/
+import CustomRightArrow from "./CustomRightArrow";
+import CustomLeftArrow from "./CustomLeftArrow";
 import { CategoryProps } from "../type";
 import { config } from "../config";
 
@@ -46,26 +48,26 @@ const BannerCategories = () => {
   }, []);
   return (
     <Carousel
-      responsive={responsive}
+    responsive={responsive}
       infinite={true}
       autoPlay={true}
       transitionDuration={1000}
       className="flex flex-row p-4 max-w-screen-xl mx-auto lg:px-0 relative"
-      /*customRightArrow={<CustomRightArrow />}
-      customLeftArrow={<CustomLeftArrow />}*/
+      customRightArrow={<CustomRightArrow />}
+      customLeftArrow={<CustomLeftArrow />}
     >
-      {categories.map((item: CategoryProps) => (
+      {categories.map((category:CategoryProps) => (
         <Link
-          key={item?._id}
-          to={`category/${item?._base}`}
+          key={category?._id}
+          to={`category/${category?._base}`}
           className="flex items-center gap-x-2 p-1 border border-gray-100 mr-1 flex-1 rounded-md hover:border-skyText hover:shadow-lg"
         >
           <img
-            src={item?.image}
+            src={category?.image}
             alt="categoryImage"
             className="w-10 h-10 rounded-full object-cover"
           />
-          <p className="text-sm font-semibold"> {item?.name}</p>
+          <p className="text-sm font-semibold"> {category?.name}</p>
         </Link>
       ))}
     </Carousel>
