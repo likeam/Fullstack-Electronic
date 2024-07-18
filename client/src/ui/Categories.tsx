@@ -45,7 +45,7 @@ const Categories = () => {
               alt="categoryImage"
               className=" w-full h-auto rounded-md  group-hover:scale-110 duration-300"
             />
-            <div className=" bottom-3 w-full text-center">
+            <div className=" bottom-3 w-full text-center group-hover:scale-110 duration-300">
               <p className="text-sm md:text-base font-bold z-50 text">
                 {item?.name}
               </p>
