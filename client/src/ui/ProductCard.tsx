@@ -1,19 +1,37 @@
 import { MdOutlineStar } from "react-icons/md";
 import { ProductProps } from "../type";
 import AddToCartBtn from "./AddToCartBtn";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 
 interface Props {
   item: ProductProps;
 }
 
 const ProductCard = ({ item }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const close = () => {
+    setIsOpen(false);
+  };
+  const open = () => {
+    setIsOpen(true);
+  };
   const percentage =
     ((item?.regularPrice - item?.discountedPrice) / item?.regularPrice) * 100;
 
   return (
     <div className=" border border-gray-200 rounded-lg p-1 overflow-hidden hover:border-black duration-200 cursor-pointer">
       <div className=" w-full h-60 relative p-2 group">
-        <span className=" bg-black text-skyText absolute left-0 w-16 text-xs text-center py-1 rounded-md font-semibold inline-block z-10">
+        <span
+          onClick={open}
+          className=" bg-black text-skyText absolute left-0 w-16 text-xs text-center py-1 rounded-md font-semibold inline-block z-10"
+        >
           Save {percentage.toFixed(0)}%
         </span>
         <img
@@ -34,8 +52,25 @@ const ProductCard = ({ item }: Props) => {
           <MdOutlineStar />
           <MdOutlineStar />
         </div>
-        <AddToCartBtn className="bg-red-600" />
+        <AddToCartBtn />
       </div>
+      <Transition appear show={isOpen}>
+        <Dialog
+          as="div"
+          className="relative z-10 focus:outline-none"
+          onClose={close}
+        >
+          <div className=" fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="">
+              <TransitionChild>
+                <DialogPanel>
+                  <DialogTitle></DialogTitle>
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </div>
   );
 };
