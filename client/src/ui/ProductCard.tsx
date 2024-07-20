@@ -15,7 +15,7 @@ interface Props {
 }
 
 const ProductCard = ({ item }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const close = () => {
     setIsOpen(false);
   };
@@ -61,7 +61,7 @@ const ProductCard = ({ item }: Props) => {
           onClose={close}
         >
           <div className=" fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div className="">
+            <div className=" flex min-h-full items-center justify-center p-4">
               <TransitionChild>
                 <DialogPanel>
                   <DialogTitle></DialogTitle>
