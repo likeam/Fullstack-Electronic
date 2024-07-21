@@ -2,7 +2,9 @@ import { MdOutlineStar } from "react-icons/md";
 import { ProductProps } from "../type";
 import AddToCartBtn from "./AddToCartBtn";
 import { useState } from "react";
+
 import {
+  Button,
   Dialog,
   DialogPanel,
   DialogTitle,
@@ -15,7 +17,7 @@ interface Props {
 }
 
 const ProductCard = ({ item }: Props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const close = () => {
     setIsOpen(false);
   };
@@ -62,9 +64,39 @@ const ProductCard = ({ item }: Props) => {
         >
           <div className=" fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className=" flex min-h-full items-center justify-center p-4">
-              <TransitionChild>
-                <DialogPanel>
-                  <DialogTitle></DialogTitle>
+              <TransitionChild
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 transform-[scale(95%)]"
+                enterTo="opacity-100 transform-[scale(100%)]"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 transform-[scale(100%)]"
+                leaveTo="opacity-0 transform-[scale(95%)]"
+              >
+                <DialogPanel className=" w-full max-w-md rounded-full bg-black z-50 p-6">
+                  <DialogTitle
+                    as="h3"
+                    className="text-base/7 font-medium text-white"
+                  >
+                    {" "}
+                    Hurry up!
+                  </DialogTitle>
+                  <p className="mt-2 text-sm/6 text-white/50">
+                    You are going to save{" "}
+                    <span className="text-skyText"> </span>
+                    from this product.
+                  </p>
+                  <p className="text-sm/6 text-white/50">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Sequi, consequatur?
+                  </p>
+                  <div className="mt-4">
+                    <Button
+                      className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                      onClick={close}
+                    >
+                      Got it, thanks!
+                    </Button>
+                  </div>
                 </DialogPanel>
               </TransitionChild>
             </div>
