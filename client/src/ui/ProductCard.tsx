@@ -11,6 +11,8 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import FormattedPrice from "./FormattedPrice";
+import ProductCardSideNav from "./ProductCardSideNav";
 
 interface Props {
   item: ProductProps;
@@ -41,6 +43,7 @@ const ProductCard = ({ item }: Props) => {
           alt="productImage"
           className=" w-full h-full rounded-md object-cover group-hover:scale-110 duration-300"
         />
+        <ProductCardSideNav />
       </div>
       <div className=" flex flex-col gap-2 px-2 pb-2">
         <h3 className=" text-xs uppercase font-semibold text-lightText">
@@ -72,7 +75,7 @@ const ProductCard = ({ item }: Props) => {
                 leaveFrom="opacity-100 transform-[scale(100%)]"
                 leaveTo="opacity-0 transform-[scale(95%)]"
               >
-                <DialogPanel className=" w-full max-w-md rounded-full bg-black z-50 p-6">
+                <DialogPanel className=" w-full max-w-md rounded-md bg-black z-50 p-8">
                   <DialogTitle
                     as="h3"
                     className="text-base/7 font-medium text-white"
@@ -82,7 +85,11 @@ const ProductCard = ({ item }: Props) => {
                   </DialogTitle>
                   <p className="mt-2 text-sm/6 text-white/50">
                     You are going to save{" "}
-                    <span className="text-skyText"> </span>
+                    <span className="text-skyText">
+                      <FormattedPrice
+                        amount={item?.regularPrice - item?.discountedPrice}
+                      />{" "}
+                    </span>
                     from this product.
                   </p>
                   <p className="text-sm/6 text-white/50">
