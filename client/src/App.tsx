@@ -1,6 +1,7 @@
 import HighLights from "./HighLights";
 import BannerCategories from "./ui/BannerCategories";
 import Categories from "./ui/Categories";
+import DiscountedBanner from "./ui/DiscountedBanner";
 import HomeBanner from "./ui/HomeBanner";
 import ProductList from "./ui/ProductList";
 
@@ -12,6 +13,7 @@ export default function App() {
       <HighLights />
       <Categories />
       <ProductList />
+      <DiscountedBanner />
     </main>
   );
 }
