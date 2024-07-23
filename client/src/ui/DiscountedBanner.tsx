@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import Container from "./Container";
 import Title from "./Title";
-import { discountImgOne } from "../assets";
+import {
+  brandFive,
+  brandFour,
+  brandOne,
+  brandSix,
+  brandThree,
+  brandTwo,
+  discountImgOne,
+  discountImgTwo,
+} from "../assets";
 
 const DiscountedBanner = () => {
   const popularSearchItems = [
@@ -31,7 +40,77 @@ const DiscountedBanner = () => {
         ))}
       </div>
       <div className=" w-full py-5 md:py-0 my-12 bg-[#f6f6f6] rounded-lg flex items-center justify-between overflow-hidden">
-        <img src={discountImgOne} alt="discountImage" className=" hidden" />
+        <img
+          src={discountImgOne}
+          alt="discountImage"
+          className=" hidden lg:inline-flex h-36"
+        />
+        <div className=" flex flex-col flex-1 gap-1 items-center">
+          <div className=" flex items-center justify-center gap-x-3 text-xl md:text-4xl font-bold">
+            <h2>Sony Headphone</h2>
+            <Link
+              to={"/product  "}
+              className=" border border-red-600 px-4 py-2 text-xl md:text-3xl text-red-600 rounded-full cursor-pointer"
+            >
+              Discount 20%
+            </Link>
+          </div>
+          <p className="text-sm text-gray-600 font-medium">
+            You’re out to play or stepping out to make
+          </p>
+        </div>
+        <img
+          src={discountImgTwo}
+          alt="discountImage2"
+          className=" hidden lg:inline-flex h-36"
+        />
+      </div>
+      <div className=" mt-7">
+        <p className=" font-bold text-2xl">Brands We Distrubute</p>
+        <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-7">
+          <div className="border border-r-0 border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+            <img
+              src={brandOne}
+              alt="brandONe"
+              className="w-36 h-auto group-hover:opacity-50 duration-200"
+            />
+          </div>
+          <div className="border border-r-0 border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+            <img
+              src={brandTwo}
+              alt="brandTwo"
+              className="w-36 h-auto group-hover:opacity-50 duration-200"
+            />
+          </div>
+          <div className="border border-r-0 border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+            <img
+              src={brandThree}
+              alt="brandThree"
+              className="w-36 h-auto group-hover:opacity-50 duration-200"
+            />
+          </div>
+          <div className="border border-r-0 border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+            <img
+              src={brandFour}
+              alt="brandFour"
+              className="w-36 h-auto group-hover:opacity-50 duration-200"
+            />
+          </div>
+          <div className="border border-r-0 border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+            <img
+              src={brandFive}
+              alt="brandFive"
+              className="w-36 h-auto group-hover:opacity-50 duration-200"
+            />
+          </div>
+          <div className="border border-gray-300 flex items-center justify-center px-6 py-2 cursor-pointer group">
+            <img
+              src={brandSix}
+              alt="brandSix"
+              className="w-36 h-auto group-hover:opacity-50 duration-200"
+            />
+          </div>
+        </div>
       </div>
     </Container>
   );
