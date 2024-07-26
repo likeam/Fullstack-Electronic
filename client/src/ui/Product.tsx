@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
 import { config } from "../config";
+import { useState } from "react";
+import { ProductProps } from "../type";
 
 const Product = () => {
+  const [productData, setProductData] = useState<ProductProps | null>(null);
   const { id } = useParams();
+
   const endpoint = id
     ? `${config?.baseUrl}/products/${id}`
     : `${config?.baseUrl}/products/`;
