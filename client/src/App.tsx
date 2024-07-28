@@ -1,4 +1,5 @@
 import HighLights from "./HighLights";
+import Product from "./pages/Product";
 import BannerCategories from "./ui/BannerCategories";
 import Blog from "./ui/Blog";
 import Categories from "./ui/Categories";
