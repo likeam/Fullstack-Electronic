@@ -8,6 +8,8 @@ const Product = () => {
   const [productData, setProductData] = useState<ProductProps | null>(null);
   const [allProducts, setAllProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
+  const [color, setColor] = useState("");
 
   const { id } = useParams();
   const endpoint = id
@@ -21,10 +23,10 @@ const Product = () => {
         const data = await getData(endpoint);
         if (id) {
           setProductData(data);
-          setAllProducts(([])
+          setAllProducts([]);
         } else {
-          setProductData(data);
-          setAllProducts(null);
+          setAllProducts(data);
+          setProductData(null);
         }
       } catch (error) {
         console.error("Failed to", error);
@@ -34,6 +36,13 @@ const Product = () => {
     };
     featchData();
   }, [id, endpoint]);
+
+  useEffect(() => {
+    if (productData) {
+      setImgUrl(productData?.images[0]);
+      setColor(productData?.colors[0]);
+    }
+  }, [productData]);
 
   return <div>Product</div>;
 };
