@@ -10,6 +10,8 @@ import PriceTag from "../ui/PriceTag";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import FormattedPrice from "../ui/FormattedPrice";
+import { IoClose } from "react-icons/io5";
+import AddToCartBtn from "../ui/AddToCartBtn";
 
 const Product = () => {
   const [productData, setProductData] = useState<ProductProps | null>(null);
@@ -80,7 +82,7 @@ const Product = () => {
               </div>
               <div className=" flex flex-col gap-4">
                 <h2 className=" text-3xl font-bold">{productData?.name}</h2>
-                <div className=" flex items-center justify-between">
+                <div className=" flex items-center justify-between ">
                   <PriceTag
                     regularPrice={productData?.regularPrice}
                     discountedPrice={productData?.discountedPrice}
@@ -97,7 +99,7 @@ const Product = () => {
                     <p className="text-base font-semibold">{`(${productData?.reviews} reviews)`}</p>
                   </div>
                 </div>
-                <p className=" flex items-center">
+                <p className=" flex items-center gap-4">
                   <FaRegEye className=" mr-1" />
                   <span className=" font-semibold mr-1">
                     {productData?.reviews}
@@ -128,7 +130,7 @@ const Product = () => {
                       </span>
                     </p>
                   )}
-                  <div className="">
+                  <div className=" flex items-center gap-x-3">
                     {productData?.colors.map((item) => (
                       <div
                         key={item}
@@ -137,9 +139,36 @@ const Product = () => {
                             ? "border border-black p-1 rounded-full"
                             : "border-transparent"
                         }`}
-                      ></div>
+                      >
+                        <div
+                          className=" w-10 h-10 rounded-full cursor-pointer"
+                          style={{ backgroundColor: item }}
+                          onClick={() => setColor(item)}
+                        ></div>
+                      </div>
                     ))}
                   </div>
+                  {color && (
+                    <button
+                      onClick= {() => setColor(" ")}
+                      className= " font-semibold mt-1 flex items-center gap-1
+                      hover:text-red-600 duration-200" >
+                      <IoClose /> Clear
+                    </button>
+                  )}
+                  <p>
+                    Brand:{" "}
+                    <span className=" font-medium">{productData?.brand}</span>
+                  </p>
+                  <p>
+                    Category:{" "}
+                    <span className=" font-medium">{productData?.category}</span>
+                  </p>
+                  <AddToCartBtn  
+                  product= {productData}
+                  title="Buy now"
+                  className=" bg-black/80 py-3 text-base text-gray-200 hover:scale-100 hover:text-white duration-200"
+                  />
                 </div>
               </div>
             </div>
