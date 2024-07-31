@@ -12,6 +12,9 @@ import { FaRegEye } from "react-icons/fa";
 import FormattedPrice from "../ui/FormattedPrice";
 import { IoClose } from "react-icons/io5";
 import AddToCartBtn from "../ui/AddToCartBtn";
+import { productPayment } from "../assets";
+import ProductCard from "../ui/ProductCard";
+import CategoryFilters from "../ui/CategoryFilters";
 
 const Product = () => {
   const [productData, setProductData] = useState<ProductProps | null>(null);
@@ -156,6 +159,7 @@ const Product = () => {
                       <IoClose /> Clear
                     </button>
                   )}
+                   </div>
                   <p>
                     Brand:{" "}
                     <span className=" font-medium">{productData?.brand}</span>
@@ -167,13 +171,27 @@ const Product = () => {
                   <AddToCartBtn  
                   product= {productData}
                   title="Buy now"
-                  className=" bg-black/80 py-3 text-base text-gray-200 hover:scale-100 hover:text-white duration-200"
+                  className="bg-[#f7f7f7] text-black p-2 border-[1px] border-gray-200 hover:border-skyText rounded-full text-sm hover:bg-white duration-200 cursor-pointer"
                   />
+                  <div className=" p-5 bg-[#f7f7f7] rounded-md flex flex-col items-center justify-center gap-2">
+                    <img src={productPayment} alt="productPyment" className="" />
+                    <p className=" font-semibold">Guaranteed safe & secure checkout</p>
+                 
                 </div>
               </div>
             </div>
           ) : (
-            <p>AppProducts</p>
+            <div className=" flex items-center gap-10">
+              <CategoryFilters id={id} />
+              <div className="">
+              <p className=" text-4xl font-semibold mb-5 text-center">Products Collection</p>
+              <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                {allProducts?.map((item: ProductProps) => (
+                  <ProductCard item={item} key={item?._id} /> 
+                ))}
+              </div>
+            </div>
+            </div>
           )}
         </Container>
       )}
