@@ -181,7 +181,7 @@ const Product = () => {
               </div>
             </div>
           ) : (
-            <div className=" flex items-center gap-10">
+            <div className=" flex justify-center gap-10">
               <CategoryFilters id={id} />
               <div className="">
               <p className=" text-4xl font-semibold mb-5 text-center">Products Collection</p>
