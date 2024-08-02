@@ -1,7 +1,12 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  ScrollRestoration,
+  createBrowserRouter,
+} from "react-router-dom";
 import Layout from "./ui/Layout.tsx";
 import Product from "./pages/Product.tsx";
 import Category from "./pages/Category.tsx";
@@ -16,6 +21,7 @@ import NotFound from "./pages/NotFound.tsx";
 const RouterLayout = () => {
   return (
     <Layout>
+      <ScrollRestoration />
       <Outlet />
     </Layout>
   );

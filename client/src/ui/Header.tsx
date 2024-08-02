@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
-import { logo } from "../assets";
+import { logo, productPayment } from "../assets";
 import { IoClose, IoSearchOutline } from "react-icons/io5";
 import { FiShoppingBag, FiStar, FiUser } from "react-icons/fi";
 import Container from "./Container";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {config} from "../config";
+import { config } from "../config";
 import { getData } from "../lib";
 import {
-  Menu, 
+  Menu,
   MenuItem,
   MenuButton,
   Transition,
-  MenuItems,  
-} from "@headlessui/react"
-import { CategoryProps } from "../type";
-
-
-
+  MenuItems,
+} from "@headlessui/react";
+import { CategoryProps, ProductProps } from "../type";
 
 const bottomNavigation = [
   { title: "Home", link: "/" },
@@ -31,19 +28,43 @@ const bottomNavigation = [
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    const fetchData = async() =>{
-      const endpoint = `${config?.baseUrl}/categories`
+    const fetchData = async () => {
+      const endpoint = `${config?.baseUrl}/products`;
       try {
-        const data = await getData(endpoint)
-        setCategories(data)
+        const data = await getData(endpoint);
+        setProducts(data);
       } catch (error) {
-        console.log('Error fetching categories', error)
+        console.log("Error fetching Products", error);
       }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
+
+  console.log("Products", products);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const endpoint = `${config?.baseUrl}/categories`;
+      try {
+        const data = await getData(endpoint);
+        setCategories(data);
+      } catch (error) {
+        console.log("Error fetching categories", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const filtered = products.filter((item: ProductProps) =>
+      item.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [searchText]);
 
   return (
     <div className="w-full bg-whiteText md:sticky md:top-0 z-50">
@@ -68,6 +89,24 @@ const Header = () => {
             <IoClose className=" absolute top-2.5 text-xl right-4" />
           )}
         </div>
+
+        {searchText && (
+          <div
+            className=" absolute left-0 top-20 w-full mx-auto max-h-[500px] px-10 py-5
+           bg-white z-20 overscroll-y-scroll"
+          >
+            {filteredProducts.length > 0 ? (
+              <div className="">Products</div>
+            ) : (
+              <div className="">
+                <p>
+                  Nothing matches with your search keywords{" "}
+                  <span>{`(${searchText})`} Plese try again</span>
+                </p>
+              </div>
+            )}
+          </div>
+        )}
 
         {/*Menu*/}
         <div className=" flex item-center gap-x-6 text-2xl">
@@ -94,7 +133,7 @@ const Header = () => {
             <MenuButton className=" inline-flex items-center gap-2 rounded-md border border-gray-400 hover:border-white py-1.5 px-3 font-semibold text-gray-300 hover:text-white">
               Select Category <FaChevronDown className=" text-base mt-1" />
             </MenuButton>
-            <Transition 
+            <Transition
               enter=" transition ease-out duration-75"
               enterFrom="opacity-0 scale-95"
               enterTo="opacity-100 scale-100"
@@ -102,19 +141,28 @@ const Header = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <MenuItems anchor="bottom end" className='w-52 origin-top-right rounded-xl border
+              <MenuItems
+                anchor="bottom end"
+                className="w-52 origin-top-right rounded-xl border
                border-white bg-black p-1 text-sm text-gray-300 [--anchor-gap:var(--spacing-1)]
-                focus:outline-none hover:text-white z-50' >
-              {categories.map((category:CategoryProps) => (
-                <MenuItem key={category?._id}>
-                  <Link to={`/category/${category?._base}`} 
-                  className=" flex w-full items-center gap-2 rounded-lg py-2 px-3 
+                focus:outline-none hover:text-white z-50"
+              >
+                {categories.map((category: CategoryProps) => (
+                  <MenuItem key={category?._id}>
+                    <Link
+                      to={`/category/${category?._base}`}
+                      className=" flex w-full items-center gap-2 rounded-lg py-2 px-3 
                   data-[focus]:bg-white/20 tracking-wide"
-                  >
-                  <img src={category?.image} alt="cate" className=" w-6 h-6 rounded-md"/>
-                  {category?.name}
-                  </Link>
-                </MenuItem>))}
+                    >
+                      <img
+                        src={category?.image}
+                        alt="cate"
+                        className=" w-6 h-6 rounded-md"
+                      />
+                      {category?.name}
+                    </Link>
+                  </MenuItem>
+                ))}
               </MenuItems>
             </Transition>
           </Menu>
