@@ -15,6 +15,7 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { CategoryProps, ProductProps } from "../type";
+import ProductCard from "./ProductCard";
 
 const bottomNavigation = [
   { title: "Home", link: "/" },
@@ -43,8 +44,6 @@ const Header = () => {
     };
     fetchData();
   }, []);
-
-  console.log("Products", products);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,15 +92,22 @@ const Header = () => {
         {searchText && (
           <div
             className=" absolute left-0 top-20 w-full mx-auto max-h-[500px] px-10 py-5
-           bg-white z-20 overscroll-y-scroll"
+           bg-white z-20 overflow-y-scroll text-black shadow-lg shadow-skyText scrollbar-hide"
           >
             {filteredProducts.length > 0 ? (
-              <div className="">Products</div>
+              <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                {filteredProducts?.map((item: ProductProps) => (
+                  <ProductCard item={item} setSearchText={setSearchText} />
+                ))}
+              </div>
             ) : (
-              <div className="">
-                <p>
+              <div className=" py-10 bg-gray-50 w-full flex items-center justify-center border border-gray-600 rounded-md">
+                <p className=" texxl  font-medium">
                   Nothing matches with your search keywords{" "}
-                  <span>{`(${searchText})`} Plese try again</span>
+                  <span className=" underline underline-offset-2 decoration-[1px] text-red-500 font-medium">
+                    {`(${searchText})`}
+                  </span>
+                  Plese try again
                 </p>
               </div>
             )}
