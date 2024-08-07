@@ -25,17 +25,17 @@ interface CartProduct extends ProductProps {
     isLoading: boolean;
     getUserInfo: (uid: any) => Promise<void>;
     // cart
-    cartProduct: CartProduct[];
-    addToCart: (product: ProductProps) => Promise<void>;
-    decreaseQuantity: (productId: number) => void;
-    removeFromCart: (productId: number) => void;
-    resetCart: () => void;
-    // // favorite
-    favoriteProduct: CartProduct[];
-    addToFavorite: (product: ProductProps) => Promise<void>;
-    removeFromFavorite: (productId: number) => void;
-    resetFavorite: () => void;
-  }
+    //     cartProduct: CartProduct[];
+    //     addToCart: (product: ProductProps) => Promise<void>;
+    //     decreaseQuantity: (productId: number) => void;
+    //     removeFromCart: (productId: number) => void;
+    //     resetCart: () => void;
+    //     // // favorite
+    //     favoriteProduct: CartProduct[];
+    //     addToFavorite: (product: ProductProps) => Promise<void>;
+    //     removeFromFavorite: (productId: number) => void;
+    //     resetFavorite: () => void;
+    }
 
 
 const customStorage = {
@@ -51,7 +51,7 @@ const customStorage = {
     },
 }
 
-export const store = create()(persist((set) => ({
+export const store = create<StoreType>()(persist((set) => ({
     currentUser:null,
     isLoading: true,
     cartProduct: [],
@@ -71,6 +71,9 @@ export const store = create()(persist((set) => ({
             console.log('Get user Info', error);
             set({currentUser: null, isLoading: false})
         }
+    },
+    addToCart: (product:ProductProps){
+        return new Promise<void>((resolve))
     }
 
 }),{
