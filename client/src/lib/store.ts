@@ -25,8 +25,8 @@ interface CartProduct extends ProductProps {
     isLoading: boolean;
     getUserInfo: (uid: any) => Promise<void>;
     // cart
-    //     cartProduct: CartProduct[];
-    //     addToCart: (product: ProductProps) => Promise<void>;
+        cartProduct: CartProduct[];
+        addToCart: (product: ProductProps) => Promise<void>;
     //     decreaseQuantity: (productId: number) => void;
     //     removeFromCart: (productId: number) => void;
     //     resetCart: () => void;
@@ -73,7 +73,11 @@ export const store = create<StoreType>()(persist((set) => ({
         }
     },
     addToCart: (product:ProductProps){
-        return new Promise<void>((resolve))
+        return new Promise<void>((resolve) => {
+            set((state:StoreType) => {
+                const exiistingProduct = state.cartProduct.find((p) => p._id === product._id)
+            })
+        })
     }
 
 }),{
