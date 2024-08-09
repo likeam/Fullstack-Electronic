@@ -72,10 +72,15 @@ export const store = create<StoreType>()(persist((set) => ({
             set({currentUser: null, isLoading: false})
         }
     },
-    addToCart: (product:ProductProps){
+    addToCart: (product:ProductProps) => {
         return new Promise<void>((resolve) => {
             set((state:StoreType) => {
-                const exiistingProduct = state.cartProduct.find((p) => p._id === product._id)
+                const existingProduct = state.cartProduct.find((p) => p._id === product._id)
+                if(existingProduct){
+                    return
+                } else{
+                    
+                }
             })
         })
     }
