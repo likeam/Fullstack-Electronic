@@ -77,7 +77,9 @@ export const store = create<StoreType>()(persist((set) => ({
             set((state:StoreType) => {
                 const existingProduct = state.cartProduct.find((p) => p._id === product._id)
                 if(existingProduct){
-                    return
+                    return{
+                        cartProduct:state.cartProduct.map((p) =>p._id === product._id? {...p, qu})
+                    }
                 } else{
                     
                 }
