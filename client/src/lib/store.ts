@@ -78,10 +78,12 @@ export const store = create<StoreType>()(persist((set) => ({
                 const existingProduct = state.cartProduct.find((p) => p._id === product._id)
                 if(existingProduct){
                     return{
-                        cartProduct:state.cartProduct.map((p) =>p._id === product._id? {...p, qu})
+                        cartProduct:state.cartProduct.map((p) =>p._id === product._id ? {...p, quantity:(p.quantity || 0) + 1} : p)
                     }
                 } else{
-                    
+                    return{
+                        cartProduct
+                    }
                 }
             })
         })
