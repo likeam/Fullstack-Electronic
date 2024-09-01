@@ -23,7 +23,7 @@ const Blog = () => {
   return (
     <Container>
       <Title text="Our Blog Posts" className=" text-center" />
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-7">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8">
         {blogsData?.map((item: BlogProps) => (
           <div className=" group cursor-pointer" key={item?._id}>
             <div className=" overflow-hidden">
