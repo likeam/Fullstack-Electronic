@@ -82,7 +82,7 @@ export const store = create<StoreType>()(persist((set) => ({
                     }
                 } else{
                     return{
-                        cartProduct
+                        cartProduct: [...state.cartProduct, {...product}]
                     }
                 }
             })
